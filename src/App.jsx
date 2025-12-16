@@ -7,6 +7,10 @@ import Login from "./authentication/Login";
 import Home from "./resume_build/Home";
 import Error from "./Error";
 
+import Layout from './components/Layout';
+import { ResumeProvider } from './context/ResumeContext';
+import Builder from "./resume_build/Builder";
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -19,18 +23,23 @@ const App = () => {
   }, []);
 
   if (loading) {
-    return <Loader />; 
+    return <Loader />;
   }
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/resume" element={<Home/>}/>    
-        <Route path="*" element={<Error />} />   
-      </Routes>
+      <ResumeProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/resume" element={<Home />} />
+            <Route path="/builder" element={<Builder />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </Layout>
+      </ResumeProvider>
     </BrowserRouter>
   );
 };
