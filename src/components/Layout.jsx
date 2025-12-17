@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-import { FileText } from 'lucide-react';
 
 const Layout = ({ children }) => {
     return (
