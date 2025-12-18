@@ -47,14 +47,14 @@ const MainPage = () => {
 
      const faqs = [
           {
-               question: "How do I create an account on FirstJob World?",
+               question: "How do I create an account on FirstJobInd World?",
                answer:
                     "You can sign up using your email address or Google account. Once registered, complete your profile to start applying for jobs.",
           },
           {
                question: "Is this platform suitable for freshers?",
                answer:
-                    "Yes, FirstJob World is specially designed for freshers and early-career professionals with entry-level jobs and internships.",
+                    "Yes, FirstJobInd World is specially designed for freshers and early-career professionals with entry-level jobs and internships.",
           },
           {
                question: "How does job matching work?",
@@ -129,8 +129,8 @@ const MainPage = () => {
                                                   <label htmlFor="my-drawer-1" className="drawer-overlay"></label>
                                                   <ul className="menu bg-base-200 min-h-full w-80 p-4">
                                                        <li>
-                                                            <Link to="/features" className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
-                                                                 Features
+                                                            <Link to="/blogs" className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
+                                                                 Blogs
                                                             </Link>
                                                        </li>
                                                        <li>
@@ -163,8 +163,8 @@ const MainPage = () => {
 
                                    <div className="hidden lg:flex lg:ml-16 lg:items-center lg:justify-center lg:space-x-10">
                                         <div className="flex items-center space-x-12">
-                                             <Link to="/features" className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
-                                                  Features
+                                             <Link to="/blogs" className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
+                                                  Blogs
                                              </Link>
 
                                              <Link to="/jobs" className="after:content-none text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">
@@ -187,57 +187,7 @@ const MainPage = () => {
                                              Create free account
                                         </Link>
 
-                                        <div className="relative">
-                                             {/* <button
-                                                  type="button"
-                                                  onClick={() => setOpen(!open)}
-                                                  className="ml-1 inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-sm hover:bg-gray-50"
-                                             >
-                                                  <img
-                                                       className="h-6 w-6 rounded-full"
-                                                       src="https://i.pravatar.cc/80?img=12"
-                                                       alt="avatar"
-                                                  />
-                                                  <span className="hidden sm:block font-medium">Alex Morgan</span>
-                                                  <ChevronDown size={16} />
-                                             </button> */}
-
-                                             {/* {open && (
-                                                  <div className="absolute right-0 mt-2 z-50 w-56 divide-y divide-gray-100 rounded-xl border border-gray-200 bg-white shadow-lg">
-                                                       <div className="px-3 py-3">
-                                                            <p className="text-sm font-semibold">Alex Morgan</p>
-                                                            <p className="text-xs text-gray-500">
-                                                                 alex.morgan@example.com
-                                                            </p>
-                                                       </div>
-
-                                                       <ul className="py-2 text-sm">
-                                                            <li>
-                                                                 <Link to='/profile' className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50"
-                                                                 >
-                                                                      <User size={16} /> Profile
-                                                                 </Link>
-                                                            </li>
-                                                            <li>
-                                                                 <Link to='/setting' 
-                                                                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50"
-                                                                 >
-                                                                      <Settings size={16} /> Settings
-                                                                 </Link>
-                                                            </li>
-                                                       </ul>
-
-                                                       <div className="py-2">
-                                                            <Link to={'/signout'}  className="flex items-center gap-2 px-3 py-2 text-red-600 hover:bg-red-50"
-                                                            >
-                                                                 <LogOut size={16} /> Sign out
-                                                            </Link>
-                                                       </div>
-                                                  </div>
-                                             )} */}
-                                        </div>
                                    </div>
-
                               </div>
                          </div>
                     </header>
@@ -252,12 +202,24 @@ const MainPage = () => {
                                                        Stop searching. Start
                                                        <span className="text-rotate">
                                                             <span>
-                                                                 <span className="bg-teal-400 text-teal-800 px-2">succeeding.</span>
-                                                                 <span className="bg-red-400 text-red-800 px-2">growing</span>
-                                                                 <span className="bg-blue-400 text-blue-800 px-2">achieving</span>
-                                                                 <span className="bg-blue-400 text-blue-800 px-2">progressing</span>
-                                                                 <span className="bg-blue-400 text-blue-800 px-2">winning big</span>
-                                                                 <span className="bg-blue-400 text-blue-800 px-2">your success</span>
+                                                                 <span className="bg-green-400 text-green-950 px-2 rounded">
+                                                                      Growing
+                                                                 </span>
+                                                                 <span className="bg-yellow-400 text-yellow-950 px-2 rounded">
+                                                                      Achieving
+                                                                 </span>
+                                                                 <span className="bg-blue-400 text-blue-950 px-2 rounded">
+                                                                      Progressing
+                                                                 </span>
+                                                                 <span className="bg-red-400 text-red-950 px-2 rounded">
+                                                                      Winning Big
+                                                                 </span>
+                                                                 <span className="bg-black text-white px-2 rounded">
+                                                                      Your Success
+                                                                 </span>
+                                                                 <span className="bg-purple-400 text-purple-950 px-2 rounded">
+                                                                      Succeeding
+                                                                 </span>
                                                             </span>
                                                        </span>
                                                   </span>
@@ -337,7 +299,7 @@ const MainPage = () => {
                <section className="py-4 bg-white sm:py-8 lg:py-10">
                     <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                          <div className="max-w-md mx-auto text-center">
-                              <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Find Opportunities That Match Your Career</h2>
+                              <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Find Opportunities That Match Your Career with AI (AI Powered Job Matching Engine)</h2>
                               <p className="mt-4 text-base font-normal leading-7 text-gray-600">Discover opportunities across industries, roles, and work preferences tailored for your career growth.</p>
                          </div>
 
@@ -370,7 +332,7 @@ const MainPage = () => {
                     <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                          <div className="max-w-md mx-auto text-center">
                               <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Trusted by Leading Companies</h2>
-                              <p className="mt-4 text-base font-normal leading-7 text-gray-600">Top companies and institutions trust FirstJob World to discover fresh talent.</p>
+                              <p className="mt-4 text-base font-normal leading-7 text-gray-600">Top companies and institutions trust FirstJobInd World to discover fresh talent.</p>
                          </div>
 
                          <div className="rounded-box max-w-7xl mx-auto px-4 py-12">
@@ -419,6 +381,7 @@ const MainPage = () => {
                                         </div>
                                         <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Create Your Resume</h3>
                                         <p className="mt-4 text-base text-gray-600">Bind your dream into your Resume.</p>
+                                        <Link to={'/resume'} className="mt-4 btn btn-success btn-sm sm:btn-sm md:btn-md lg:btn-md xl:btn-md">Get Your Resume</Link>
                                    </div>
 
                                    <div>
@@ -604,7 +567,7 @@ const MainPage = () => {
                                    Frequently Asked Questions
                               </h2>
                               <p className="max-w-xl mx-auto mt-4 text-base text-gray-600">
-                                   Everything you need to know about using FirstJob World
+                                   Everything you need to know about using FirstJobInd World
                               </p>
                          </div>
                          {/* faq */}
@@ -691,7 +654,7 @@ const MainPage = () => {
                               <div className="flex items-center gap-2 font-medium">
                                    <img src={firstJobInd} className="h-10" alt="Website logo" />
                               </div>
-                              <p>Copyright © 2025 ruantodev</p>
+                              <p>© 2025 FirstJobInd. All rights reserved. | Solving India's Fresher Employment Crisis</p>
                          </div>
                     </div>
                </footer>

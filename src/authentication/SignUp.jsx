@@ -1,173 +1,238 @@
-import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
-import { FaXTwitter } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom"
+import { FaGoogle, FaGithub } from "react-icons/fa"
+import firstJobInd from '../assets/firstJobInd.png'
+import { useState } from "react"
+import BackButton from "../BackButton"
 
-const SignUp = () => {
+const Signup = () => {
+    const navigate = useNavigate()
+
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        mobile: "",
+        email: "",
+        password: "",
+        repeatPassword: "",
+        acceptTerms: false
+    })
+    const [error, setError] = useState("")
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }))
+    }
+
+    const handleSignup = (e) => {
+        e.preventDefault()
+        setError("")
+
+        // Basic validation
+        if (!formData.firstName || !formData.lastName || !formData.mobile || !formData.email || !formData.password) {
+            setError("All fields are required")
+            return
+        }
+
+        if (formData.password !== formData.repeatPassword) {
+            setError("Passwords do not match")
+            return
+        }
+
+        if (!formData.acceptTerms) {
+            setError("You must accept the terms and conditions")
+            return
+        }
+
+        // Dummy signup - in a real app, this would be an API call
+        localStorage.setItem("isAuth", "true")
+        localStorage.setItem("userRole", "user")
+
+        navigate("/login")
+    }
+
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 sm:px-6">
-            <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl">
+        <div className="bg-white dark:bg-gray-800 flex justify-center items-center w-screen min-h-screen p-5">
+            <div className="min-h-screen flex w-full">
+                {/* Left Side - Form Section */}
+                <div className="w-full lg:w-1/2 flex items-center justify-center bg-white p-8">
+                    <div className="w-full max-w-md">
+                        <div className="text-center lg:text-left mb-6">
+                            <h2 className="text-3xl font-extrabold text-gray-900 mb-2">Create Account</h2>
+                            <p className="text-gray-600">Join us today! It only takes a minute</p>
+                        </div>
 
-                {/* Gradient background */}
-                <div className="absolute inset-0 bg-linear-to-r from-blue-300 to-blue-600 shadow-lg 
-                    transform -skew-y-3 sm:skew-y-0 sm:-rotate-3 rounded-3xl">
+                        <form className="space-y-4" onSubmit={handleSignup}>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">First Name</label>
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        name="firstName"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
+                                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="John" autoComplete="off"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Last Name</label>
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        name="lastName"
+                                        value={formData.lastName}
+                                        onChange={handleChange}
+                                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Doe" autoComplete="off"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="mobile" className="block text-sm font-medium text-gray-700">Mobile Number</label>
+                                <input
+                                    type="tel"
+                                    id="mobile"
+                                    name="mobile"
+                                    value={formData.mobile}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="+1234567890" autoComplete="off"
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="example@mail.com" autoComplete="off"
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="••••••••" autoComplete="off"
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="repeatPassword" className="block text-sm font-medium text-gray-700">Repeat Password</label>
+                                <input
+                                    type="password"
+                                    id="repeatPassword"
+                                    name="repeatPassword"
+                                    value={formData.repeatPassword}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="••••••••" autoComplete="off"
+                                />
+                            </div>
+
+                            <div className="flex items-center">
+                                <input
+                                    id="acceptTerms"
+                                    name="acceptTerms"
+                                    type="checkbox"
+                                    checked={formData.acceptTerms}
+                                    onChange={handleChange}
+                                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                />
+                                <label htmlFor="acceptTerms" className="ml-2 block text-sm text-gray-700">
+                                    I accept the <a href="#" className="text-blue-600 hover:underline">Terms & Conditions</a>
+                                </label>
+                            </div>
+
+                            {/* Error */}
+                            {error && (
+                                <p className="text-sm text-red-500 text-center">
+                                    {error}
+                                </p>
+                            )}
+
+                            <div>
+                                <button
+                                    type="submit"
+                                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                >
+                                    Sign Up
+                                </button>
+                            </div>
+                        </form>
+
+                        <div className="mt-4">
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-gray-300"></div>
+                                </div>
+                                <div className="relative flex justify-center text-sm">
+                                    <span className="px-2 bg-white text-gray-500">Or sign up with</span>
+                                </div>
+                            </div>
+
+                            <div className="mt-4 grid grid-cols-2 gap-3">
+                                <button className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                    <FaGoogle className="h-5 w-5 text-red-500" />
+                                    <span className="ml-2">Google</span>
+                                </button>
+                                <button className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                    <FaGithub className="h-5 w-5 text-gray-800" />
+                                    <span className="ml-2">GitHub</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <p className="mt-6 text-center text-sm text-gray-600">
+                            Already have an account?
+                            <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">Login now</Link>
+                        </p>
+                    </div>
                 </div>
 
-                {/* Card */}
-                <div className="relative bg-white shadow-lg rounded-3xl 
-                    px-6 py-8 sm:px-10 sm:py-12 md:px-14 md:py-16">
-
-                    <div className="max-w-md mx-auto">
-                        <h1 className="text-xl sm:text-2xl font-semibold text-center mb-8">
-                            Sign Up
-                        </h1>
-
-                        <div className="space-y-6 text-gray-700">
-
-                            {/* First + Last Name */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div className="relative">
-                                    <input
-                                        autoComplete="off"
-                                        id="fname"
-                                        type="text"
-                                        placeholder="First Name"
-                                        className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 
-                           focus:outline-none focus:border-blue-500 placeholder-transparent"
-                                    />
-                                    <label
-                                        htmlFor="fname"
-                                        className="absolute left-0 -top-3.5 text-sm text-gray-600 transition-all
-                           peer-placeholder-shown:top-2
-                           peer-placeholder-shown:text-base
-                           peer-placeholder-shown:text-gray-400
-                           peer-focus:-top-3.5
-                           peer-focus:text-sm"
-                                    >
-                                        First Name
-                                    </label>
-                                </div>
-
-                                <div className="relative">
-                                    <input
-                                        autoComplete="off"
-                                        id="lname"
-                                        type="text"
-                                        placeholder="Last Name"
-                                        className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 
-                           focus:outline-none focus:border-blue-500 placeholder-transparent"
-                                    />
-                                    <label
-                                        htmlFor="lname"
-                                        className="absolute left-0 -top-3.5 text-sm text-gray-600 transition-all
-                           peer-placeholder-shown:top-2
-                           peer-placeholder-shown:text-base
-                           peer-placeholder-shown:text-gray-400
-                           peer-focus:-top-3.5
-                           peer-focus:text-sm"
-                                    >
-                                        Last Name
-                                    </label>
-                                </div>
-                            </div>
-
-                            {/* Email */}
-                            <div className="relative">
-                                <input
-                                    autoComplete="off"
-                                    id="email"
-                                    type="email"
-                                    placeholder="Email address"
-                                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 
-                         focus:outline-none focus:border-blue-500 placeholder-transparent"
-                                />
-                                <label
-                                    htmlFor="email"
-                                    className="absolute left-0 -top-3.5 text-sm text-gray-600 transition-all
-                         peer-placeholder-shown:top-2
-                         peer-placeholder-shown:text-base
-                         peer-placeholder-shown:text-gray-400
-                         peer-focus:-top-3.5
-                         peer-focus:text-sm"
-                                >
-                                    Email Address
-                                </label>
-                            </div>
-
-                            {/* Password */}
-                            <div className="relative">
-                                <input
-                                    id="password"
-                                    type="password"
-                                    placeholder="Password"
-                                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 
-                         focus:outline-none focus:border-blue-500 placeholder-transparent"
-                                />
-                                <label
-                                    htmlFor="password"
-                                    className="absolute left-0 -top-3.5 text-sm text-gray-600 transition-all
-                         peer-placeholder-shown:top-2
-                         peer-placeholder-shown:text-base
-                         peer-placeholder-shown:text-gray-400
-                         peer-focus:-top-3.5
-                         peer-focus:text-sm"
-                                >
-                                    Password
-                                </label>
-                            </div>
-
-                            {/* Re-type Password */}
-                            <div className="relative">
-                                <input
-                                    id="retypepassword"
-                                    type="password"
-                                    placeholder="Re Password"
-                                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 
-                         focus:outline-none focus:border-blue-500 placeholder-transparent"
-                                />
-                                <label
-                                    htmlFor="retypepassword"
-                                    className="absolute left-0 -top-3.5 text-sm text-gray-600 transition-all
-                         peer-placeholder-shown:top-2
-                         peer-placeholder-shown:text-base
-                         peer-placeholder-shown:text-gray-400
-                         peer-focus:-top-3.5
-                         peer-focus:text-sm"
-                                >
-                                    Re Password
-                                </label>
-                            </div>
-
-                            {/* Submit */}
-                            <button className="w-full bg-blue-500 text-white py-2 rounded-md 
-                             hover:bg-blue-600 transition">
-                                Create Account
-                            </button>
-
-                            {/* Social login */}
-                            <div className="pt-6">
-                                <p className="text-center text-sm text-gray-500 mb-4">
-                                    Or continue with
-                                </p>
-                                <div className="flex justify-center gap-4">
-                                    <Link className="w-10 h-10 flex items-center justify-center rounded-full border hover:bg-gray-100 transition">
-                                        <FaFacebookSquare />
-                                    </Link>
-                                    <Link className="w-10 h-10 flex items-center justify-center rounded-full border hover:bg-gray-100 transition">
-                                        <FaGoogle />
-                                    </Link>
-                                    <Link className="w-10 h-10 flex items-center justify-center rounded-full border hover:bg-gray-100 transition">
-                                        <FaXTwitter />
-                                    </Link>
-                                </div>
-                            </div>
-
+                {/* Right Side - Visual Section */}
+                <div className="hidden lg:flex lg:w-1/2 bg-linear-to-tr from-blue-800 to-purple-700 justify-center items-center relative overflow-hidden">
+                    <div className="absolute top-6 left-6 z-20">
+                        <BackButton />
+                    </div>
+                    <div className="absolute inset-0 bg-black opacity-20"></div>
+                    <div className="relative z-10 px-10 text-center">
+                        <div className="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-8 shadow-2xl">
+                            <img src={firstJobInd} alt="website logo" />
+                            {/* <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                            </svg> */}
+                        </div>
+                        <h1 className="text-4xl font-bold text-white mb-4">Join Our Community</h1>
+                        <p className="text-white/80 text-lg mb-8">Create your account today and get access to exclusive features and content.</p>
+                        <div className="flex justify-center space-x-4">
+                            <div className="w-3 h-3 rounded-full bg-white/30"></div>
+                            <div className="w-3 h-3 rounded-full bg-white"></div>
+                            <div className="w-3 h-3 rounded-full bg-white/30"></div>
                         </div>
                     </div>
+                    {/* Decorative Elements */}
+                    <div className="absolute -bottom-32 -right-40 w-80 h-80 border-4 border-white/30 rounded-full"></div>
+                    <div className="absolute -bottom-40 -right-20 w-80 h-80 border-4 border-white/30 rounded-full"></div>
+                    <div className="absolute top-0 -left-20 w-80 h-80 border-4 border-white/30 rounded-full"></div>
                 </div>
             </div>
         </div>
-
     )
 }
 
-export default SignUp
+export default Signup
