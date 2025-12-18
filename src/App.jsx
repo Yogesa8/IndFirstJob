@@ -38,8 +38,8 @@ const App = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/resume" element={<Home />} />
             <Route path="/builder" element={<Builder />} />
-            <Route path="/profile" element={<ProfileDashboard />} />
-            <Route path="/setting" element={<SettingsPage />} />
+            {/* <Route path="/profile" element={<ProfileDashboard />} /> */}
+            {/* <Route path="/setting" element={<SettingsPage />} /> */}
             <Route path="*" element={<Error />} />
           </Routes>
         </Layout>
