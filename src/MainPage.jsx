@@ -188,7 +188,7 @@ const MainPage = () => {
                                         </Link>
 
                                         <div className="relative">
-                                             <button
+                                             {/* <button
                                                   type="button"
                                                   onClick={() => setOpen(!open)}
                                                   className="ml-1 inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-sm hover:bg-gray-50"
@@ -200,9 +200,9 @@ const MainPage = () => {
                                                   />
                                                   <span className="hidden sm:block font-medium">Alex Morgan</span>
                                                   <ChevronDown size={16} />
-                                             </button>
+                                             </button> */}
 
-                                             {open && (
+                                             {/* {open && (
                                                   <div className="absolute right-0 mt-2 z-50 w-56 divide-y divide-gray-100 rounded-xl border border-gray-200 bg-white shadow-lg">
                                                        <div className="px-3 py-3">
                                                             <p className="text-sm font-semibold">Alex Morgan</p>
@@ -234,7 +234,7 @@ const MainPage = () => {
                                                             </Link>
                                                        </div>
                                                   </div>
-                                             )}
+                                             )} */}
                                         </div>
                                    </div>
 
