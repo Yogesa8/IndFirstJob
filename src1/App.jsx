@@ -10,8 +10,6 @@ import Error from "./Error";
 import Layout from './components/Layout';
 import { ResumeProvider } from './context/ResumeContext';
 import Builder from "./resume_build/Builder";
-import SettingsPage from "./UserDeshboard/SettingsPage";
-import ProfileDashboard from "./UserDeshboard/ProfileDashboard";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -19,7 +17,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -38,8 +36,6 @@ const App = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/resume" element={<Home />} />
             <Route path="/builder" element={<Builder />} />
-            <Route path="/profile" element={<ProfileDashboard />} />
-            <Route path="/setting" element={<SettingsPage />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </Layout>

@@ -1,15 +1,9 @@
 import React from "react";
-import error from "./assets/NotFound.png"
 import { Link } from "react-router-dom";
 const Error = () => {
   return (
     <div className="h-screen bg-white items-center flex justify-center px-5 lg:px-0">
       <div className="w-103.75 text-center flex-col items-center justify-center mx-auto gap-25">
-        <div className="mb-8 md:mb-14">
-          <div className="max-w-78 w-full h-40 relative flex justify-center items-center mx-auto">
-            <img src={error} alt="404" />
-          </div>
-        </div>
         <div>
           <h3 className="text-4xl md:text-[56px] leading-16 text-[#1A1C16]">
             Page Not Found

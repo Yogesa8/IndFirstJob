@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import firstJobInd from "./assets/firstJobInd.png"
-import { Home, Building2, CheckCircle, Settings, FileText, Code2, BarChart3, GraduationCap, Award, Users, TrendingUp, ChevronDown, LogOut, User } from "lucide-react";
+import { Home, Building2, CheckCircle, Settings, FileText, Code2, BarChart3, GraduationCap, Award, Users, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import amazon from "./assets/logoslider/amazon.png";
@@ -25,7 +25,6 @@ import zomato from "./assets/logoslider/zomato.jpg";
 import Marquee from "react-fast-marquee";
 
 const MainPage = () => {
-     const [open, setOpen] = useState(false);
 
      const handleCall = () => {
           window.location.href = "tel:+918198907329";
@@ -186,58 +185,7 @@ const MainPage = () => {
                                         >
                                              Create free account
                                         </Link>
-
-                                        <div className="relative">
-                                             <button
-                                                  type="button"
-                                                  onClick={() => setOpen(!open)}
-                                                  className="ml-1 inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-sm hover:bg-gray-50"
-                                             >
-                                                  <img
-                                                       className="h-6 w-6 rounded-full"
-                                                       src="https://i.pravatar.cc/80?img=12"
-                                                       alt="avatar"
-                                                  />
-                                                  <span className="hidden sm:block font-medium">Alex Morgan</span>
-                                                  <ChevronDown size={16} />
-                                             </button>
-
-                                             {open && (
-                                                  <div className="absolute right-0 mt-2 z-50 w-56 divide-y divide-gray-100 rounded-xl border border-gray-200 bg-white shadow-lg">
-                                                       <div className="px-3 py-3">
-                                                            <p className="text-sm font-semibold">Alex Morgan</p>
-                                                            <p className="text-xs text-gray-500">
-                                                                 alex.morgan@example.com
-                                                            </p>
-                                                       </div>
-
-                                                       <ul className="py-2 text-sm">
-                                                            <li>
-                                                                 <Link to='/profile' className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50"
-                                                                 >
-                                                                      <User size={16} /> Profile
-                                                                 </Link>
-                                                            </li>
-                                                            <li>
-                                                                 <Link to='/setting' 
-                                                                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50"
-                                                                 >
-                                                                      <Settings size={16} /> Settings
-                                                                 </Link>
-                                                            </li>
-                                                       </ul>
-
-                                                       <div className="py-2">
-                                                            <Link to={'/signout'}  className="flex items-center gap-2 px-3 py-2 text-red-600 hover:bg-red-50"
-                                                            >
-                                                                 <LogOut size={16} /> Sign out
-                                                            </Link>
-                                                       </div>
-                                                  </div>
-                                             )}
-                                        </div>
                                    </div>
-
                               </div>
                          </div>
                     </header>
